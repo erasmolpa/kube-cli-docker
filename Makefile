@@ -17,11 +17,11 @@ d-scan: ## DOCKER Scan Image
 
 .PHONY: d-run
 d-run: ## DOCKER Push run default ports
-	docker run -it --rm --name ${CONTAINER_NAME} -v ${KUBECONFIG_PATH}:/.kube/ ${DOCKER_IMAGE}:${TAG}
+	docker run -d -it --rm --name ${CONTAINER_NAME} -v ${KUBECONFIG_PATH}:/.kube/ ${DOCKER_IMAGE}:${TAG}
 
 .PHONY: d-run-it
 d-run-it: ## DOCKER Push run default ports
-	docker run -d -it --rm --name ${CONTAINER_NAME} -v ${KUBECONFIG_PATH}:/.kube/ ${DOCKER_IMAGE}:${TAG}
+	docker run -it --rm --name ${CONTAINER_NAME} -v ${KUBECONFIG_PATH}:/.kube/ ${DOCKER_IMAGE}:${TAG}
 
 .PHONY: d-push
 d-push: ## DOCKER Push run default ports
