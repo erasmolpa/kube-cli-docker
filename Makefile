@@ -30,3 +30,19 @@ d-push: ## DOCKER Push
 .PHONY: d-exec
 d-exec: ## DOCKER EXEC Any command Eg d-exec kubectl get nodes // d-exec helm list 
 	docker exec  ${CONTAINER_NAME} $(command)
+	
+.PHONY: h-exec
+h-exec: ## make h-exec command="list"
+	docker exec ${CONTAINER_NAME} helm $(command)
+
+.PHONY: k-exec
+k-exec: ## make k-exec command="get nodes"
+	docker exec ${CONTAINER_NAME} kubectl $(command)
+
+.PHONY: k-get-contexts
+k-get-contexts: ## kubectl get All contexts
+	docker exec ${CONTAINER_NAME} kubectl config get-contexts
+
+.PHONY: k-set-context
+k-set-context: ## kubectl set Context k-set-context c=docker-desktop
+	docker exec  ${CONTAINER_NAME} kubectl config use-context $(c)
